@@ -2,7 +2,7 @@ dataset_config: &dataset_config
   target_dir: './data/glorys'
   clima_dir: './data/glorys_clima'
   bg_dir: './data/forecast_bg'
-  in_situ_obs_dir: './data/HadIOD/'
+  in_situ_obs_dir: './data/insitu/'
   sate_sst_dir: './data/SST'
   sate_sss_dir: './data/SSS'
   sate_sla_dir: './data/SSH'
