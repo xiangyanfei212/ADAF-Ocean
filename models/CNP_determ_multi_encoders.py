@@ -312,7 +312,7 @@ class Decoder(nn.Module):
         return predictions
 
 
-@register('CNP_determ_skip_connection_v4')
+@register('CNP_determ_multi_encoders')
 class CNP(nn.Module):
     """The CNP Model: Combines the encoder and decoder to process inputs and predict target outputs."""
 
