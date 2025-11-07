@@ -99,7 +99,7 @@ torchrun --nproc_per_node=2 \
 
 The repository also provides an inference script to evaluate the trained model and generate predictions. Below is an example usage:
 ```
-exp_dir='./exps/' # the trained model weights must put in this folder
+exp_dir='./exps/' # the trained model weights must put in this folder, named training_checkpoints
 
 nohup python -u inference.py \
     --exp_dir=${exp_dir} \
