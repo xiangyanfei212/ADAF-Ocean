@@ -1,0 +1,26 @@
+{
+    "temp_qc": {
+        "min": -3,
+        "max": 36,
+        "mean": 12,
+        "std": 10
+    },
+    "sal_qc": {
+        "min": 0,
+        "max": 40,
+        "mean": 35,
+        "std": 2
+    },
+    "temp": {
+        "min": -3,
+        "max": 36,
+        "mean": 12,
+        "std": 10
+    },
+    "sal": {
+        "min": 0,
+        "max": 40,
+        "mean": 35,
+        "std": 2
+    }
+}

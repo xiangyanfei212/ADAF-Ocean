@@ -1,0 +1,14 @@
+{
+    "Sea_Surface_Salinity_Rain_Corrected": {
+        "min": 0,
+        "max": 40,
+        "mean": 34,
+        "std": 4
+    },
+    "Sea_Surface_Salinity_Rain_Corrected_filled": {
+        "min": 0,
+        "max": 40,
+        "mean": 34,
+        "std": 4
+    }
+}

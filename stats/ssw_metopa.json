@@ -1,0 +1,38 @@
+{
+    "eastward_wind": {
+        "min": -35,
+        "max": 35,
+        "mean": 0,
+        "std": 7
+    },
+    "northward_wind": {
+        "min": -35,
+        "max": 35,
+        "mean": 0,
+        "std": 7
+    },
+    "wind_dir": {
+        "min": 0,
+        "max": 360,
+        "mean": 185,
+        "std": 100
+    },
+    "wind_speed": {
+        "min": 0,
+        "max": 40,
+        "mean": 8,
+        "std": 4
+    },
+    "wind_dir_filled": {
+        "min": 0,
+        "max": 360,
+        "mean": 185,
+        "std": 100
+    },
+    "wind_speed_filled": {
+        "min": 0,
+        "max": 40,
+        "mean": 8,
+        "std": 4
+    }
+}
