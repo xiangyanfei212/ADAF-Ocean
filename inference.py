@@ -346,7 +346,6 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--exp_dir", default="", type=str)
-    parser.add_argument("--model_ep", default=0, type=int)
     parser.add_argument("--depths", default=[0], type=list)
     parser.add_argument("--min_lon", default=0, type=float)
     parser.add_argument("--max_lon", default=360, type=float)
@@ -387,7 +386,7 @@ if __name__ == '__main__':
 
     # %% logging utils
     log_file_path = os.path.join(
-        args.exp_dir, f"inference_ep{args.model_ep}.log")
+        args.exp_dir, f"inference.log")
     if os.path.exists(log_file_path):
         os.remove(log_file_path)
     logger = log_to_file_and_screen(log_file_path=log_file_path)
@@ -395,7 +394,7 @@ if __name__ == '__main__':
     # %% prediction save path
     out_dir = os.path.join(
         args.exp_dir,
-        f"inference_ep{args.model_ep}_{res}")
+        f"inference_{res}")
     os.makedirs(out_dir, exist_ok=True) 
 
     # %% Device init
@@ -406,7 +405,7 @@ if __name__ == '__main__':
 
     # %% Model loading
     model_ckpt_path = os.path.join(
-        args.exp_dir, "training_checkpoints", f"epoch-{args.model_ep}.pth")
+        args.exp_dir, "training_checkpoints", "checkpoint.pth")
     logger.info(f'Load model from {model_ckpt_path}')
     model_spec = torch.load(model_ckpt_path)['model']
     model = models.make(model_spec, load_sd=True).to(device)
