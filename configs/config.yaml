@@ -1,8 +1,8 @@
 dataset_config: &dataset_config
   target_dir: './data/glorys'
   clima_dir: './data/glorys_clima'
-  bg_dir: './data/forecast_bg'
-  in_situ_obs_dir: './data/insitu/'
+  bg_dir: './data/bg_forecast'
+  in_situ_obs_dir: './data/insitu'
   sate_sst_dir: './data/SST'
   sate_sss_dir: './data/SSS'
   sate_sla_dir: './data/SSH'
@@ -32,21 +32,21 @@ dataset_config: &dataset_config
   bg_block_shape : [10, 20, 1] # units:degree
   sate_sic_patch_shape : [10, 20] # units: degree/grid
   sate_sla_patch_shape : [10, 20] # units: grid
-  sate_ssw_patch_shape : [10, 20] # units: grid, 10/0.25=40, 20/0.25=80, [40, 80]
-  sate_sst_patch_shape : [10, 20]   # units: grid, 10/0.04=250, 20/0.04=500, [250, 500], 
-  sate_sss_patch_shape : [10, 20]    # units: grid, 10/0.2=50, 20/0.02=100 
+  sate_ssw_patch_shape : [40, 80] # units: grid, 10/0.25=40, 20/0.25=80
+  sate_sst_patch_shape : [250, 500]   # units: grid, 10/0.04=250, 20/0.04=500
+  sate_sss_patch_shape : [50, 100]    # units: grid, 10/0.2=50, 20/0.02=100 
   in_situ_obs_patch_range : [10, 20, 20] # units: degree, degree, meter
   in_situ_obs_pad : 300
   time_window_sate: 1
   normalization: 'minmax_v2' # options: minmax_v1, minmax_v2, z_score
   loc_normalization: 'cycle' # options: cycle, minmax_v1, minmax_v2,
-  bg_lead_time: 4 # forecast lead time, lead_time=5
+  bg_lead_time: 2 # forecast lead time, lead_time=5
   bg_interp: False
 
 train_dataset:
   <<: *dataset_config
   time_range: ['20180110', '20190110'] # ['20160101', '20160501'] # ['20100115', '20100415']
-  num_blocks: 64 # 128
+  num_blocks: 128 # 128
   target_lat_step: 5 
   target_lon_step: 5
   target_depth_step: 1
@@ -54,7 +54,7 @@ train_dataset:
 valid_dataset:
   <<: *dataset_config
   time_range: ['20190110', '20200107'] # ['20160101', '20160501'] # ['20100115', '20100415']
-  num_blocks: 64 # 128
+  num_blocks: 128 # 128
   target_lat_step: 5 
   target_lon_step: 5
   target_depth_step: 1
@@ -65,7 +65,7 @@ test_dataset:
   num_blocks: 10
 
 model:
-  name: CNP_determ_multi_encoders
+  name: CNP_determ_skip_connection_v4
   args:
     in_ch_bg: 10 # 8 10 
     in_ch_in_situ_obs: 7 # 5 7 
@@ -86,14 +86,14 @@ model:
     activation: 'relu' # relu, leakyrelu, tanh
 
 swanlab:
-  project: 'Your project name'
-  workspace: "Your workspace name"
+  project: 'your project name'
+  workspace: "your workspace name"
 
 optimizer:
   name: adam
   args:
     lr: 1.e-4
-epoch_max: 300 
+epoch_max: 400 
 loss:
   mask_land: true
   learn_residual: true 
