@@ -48,13 +48,74 @@ Model weights can be accessed at Zenodo[url: ].
 
 # Usage
 
-## Environments installation
 
+## Environments Installation
 
+To ensure a consistent computational environment, we provide a `environment.yaml` file that specifies all required dependencies. 
 
-## Train
+Create and activate the Conda Environment**:  
+   Use the provided `environment.yaml` file to create the environment:
+   ```bash
+   conda env create -f environment.yaml
+   conda activate ADAF-Ocean
+   ```
+## Training Script
+
+The repository provides an example training script to train the model using the datasets.
+
+```
+export CUDA_VISIBLE_DEVICES='0,1'
+
+yaml_config='./configs/config.yaml'
+exp_dir='./exps/'
+
+run_num=$(date "+%Y%m%d-%H%M%S")
+resume=False
+resume_ep=0
+resume_lr=1e-4
+
+device='GPU'
+batch_size=4
+seed=42
+
+torchrun --nproc_per_node=2 \
+    --master_port=26900 \
+    train.py \
+    --yaml_config=${yaml_config} \
+    --exp_dir=${exp_dir} \
+    --resume=${resume} \
+    --resume_ep=${resume_ep} \
+    --resume_lr=${resume_lr} \
+    --run_num=${run_num} \
+    --batch_size=${batch_size} \
+    --n_gpus=2 \
+    --num_workers=8 \
+    --device=${device} \
+    > logs/train_${run_num}.log 2>&1 &
+```
+
 
 ## Inference
+
+The repository also provides an inference script to evaluate the trained model and generate predictions. Below is an example usage:
+```
+exp_dir='./exps/' # the trained model weights must put in this folder
+
+nohup python -u inference.py \
+    --exp_dir=${exp_dir} \
+    --lon_res=1 \
+    --lat_res=1 \
+    --lat_step=5 \
+    --lon_step=5 \
+    --depth_step=1 \
+    --batch_block=300 \
+    > logs/inference.log 2>&1 &
+```
+
+
+
+
+
 
 
 
