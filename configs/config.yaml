@@ -65,7 +65,7 @@ test_dataset:
   num_blocks: 10
 
 model:
-  name: CNP_determ_skip_connection_v4
+  name: CNP_determ_multi_encoders
   args:
     in_ch_bg: 10 # 8 10 
     in_ch_in_situ_obs: 7 # 5 7 
