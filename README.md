@@ -21,7 +21,7 @@ ADAF-Ocean/
 # Data Preparation
 
 The datasets used in this project include multi-source observations and forecast data.
-Some examples of these data can be accessed at Zenodo[url: ], including NetCDF (`.nc`) files for three consecutive days: January 1, 2, and 3, 2020. 
+Some examples of these data can be accessed at Zenodo: [Dataset Link](https://doi.org/10.5281/zenodo.17543316), including NetCDF (`.nc`) files for three consecutive days: January 1, 2, and 3, 2020. 
 Each dataset is stored in a folder based on the type of data it contains:
 
 - **`forecast_bg/`**: Background forecast data.
@@ -44,16 +44,15 @@ Please refer to the respective licenses for more details.
 
 # Trained model weights
 
-Model weights can be accessed at Zenodo[url: ].
+Model weights can be accessed at Zenodo: [Model Weights Link](https://doi.org/10.5281/zenodo.17543316).
 
 # Usage
-
 
 ## Environments Installation
 
 To ensure a consistent computational environment, we provide a `environment.yaml` file that specifies all required dependencies. 
 
-Create and activate the Conda Environment**:  
+Create and activate the Conda Environment:  
    Use the provided `environment.yaml` file to create the environment:
    ```bash
    conda env create -f environment.yaml
@@ -113,7 +112,9 @@ nohup python -u inference.py \
 ```
 
 
+# References
 
+1.  M. Garnelo, J. Schwarz, D. Rosenbaum, F. Viola, D.J. Rezende, S.M.A. Eslami, Y.W. Teh. Neural processes (2018). https://arxiv.org/abs/1807.01622
 
 
 
